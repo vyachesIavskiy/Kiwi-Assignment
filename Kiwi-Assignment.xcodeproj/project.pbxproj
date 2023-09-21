@@ -14,6 +14,16 @@
 		F90E454B2ABC361100C1851A /* GraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454A2ABC361100C1851A /* GraphQLClient.swift */; };
 		F90E454D2ABC3C8F00C1851A /* GraphQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454C2ABC3C8F00C1851A /* GraphQLRequest.swift */; };
 		F90E454F2ABC3CB700C1851A /* GraphQLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454E2ABC3CB700C1851A /* GraphQLResponse.swift */; };
+		F90E45532ABC4D5300C1851A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45522ABC4D5300C1851A /* Place.swift */; };
+		F90E45592ABC4E2800C1851A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45582ABC4E2800C1851A /* Models.swift */; };
+		F90E45602ABC5C7F00C1851A /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E455F2ABC5C7F00C1851A /* Flight.swift */; };
+		F90E45622ABC881600C1851A /* CabinClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45612ABC881600C1851A /* CabinClass.swift */; };
+		F90E45642ABC884800C1851A /* BookingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45632ABC884800C1851A /* BookingOption.swift */; };
+		F90E45662ABC886800C1851A /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45652ABC886800C1851A /* Segment.swift */; };
+		F90E45692ABC888A00C1851A /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45682ABC888A00C1851A /* Carrier.swift */; };
+		F90E456C2ABC88BC00C1851A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E456B2ABC88BC00C1851A /* Stop.swift */; };
+		F90E456F2ABC88CF00C1851A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E456E2ABC88CF00C1851A /* City.swift */; };
+		F90E45712ABC88EA00C1851A /* Layover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45702ABC88EA00C1851A /* Layover.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +35,16 @@
 		F90E454A2ABC361100C1851A /* GraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLClient.swift; sourceTree = "<group>"; };
 		F90E454C2ABC3C8F00C1851A /* GraphQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRequest.swift; sourceTree = "<group>"; };
 		F90E454E2ABC3CB700C1851A /* GraphQLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLResponse.swift; sourceTree = "<group>"; };
+		F90E45522ABC4D5300C1851A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		F90E45582ABC4E2800C1851A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F90E455F2ABC5C7F00C1851A /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		F90E45612ABC881600C1851A /* CabinClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinClass.swift; sourceTree = "<group>"; };
+		F90E45632ABC884800C1851A /* BookingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOption.swift; sourceTree = "<group>"; };
+		F90E45652ABC886800C1851A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		F90E45682ABC888A00C1851A /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
+		F90E456B2ABC88BC00C1851A /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		F90E456E2ABC88CF00C1851A /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		F90E45702ABC88EA00C1851A /* Layover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layover.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +77,7 @@
 		F90E453A2ABC33A000C1851A /* Kiwi-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				F90E45512ABC4D4C00C1851A /* Models */,
 				F90E45492ABC360400C1851A /* GraphQL */,
 				F90E453B2ABC33A000C1851A /* Kiwi_AssignmentApp.swift */,
 				F90E453D2ABC33A000C1851A /* ContentView.swift */,
@@ -82,6 +103,47 @@
 				F90E454A2ABC361100C1851A /* GraphQLClient.swift */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		F90E45512ABC4D4C00C1851A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F90E45582ABC4E2800C1851A /* Models.swift */,
+				F90E45522ABC4D5300C1851A /* Place.swift */,
+				F90E455F2ABC5C7F00C1851A /* Flight.swift */,
+				F90E45672ABC886B00C1851A /* Flight */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F90E45672ABC886B00C1851A /* Flight */ = {
+			isa = PBXGroup;
+			children = (
+				F90E45612ABC881600C1851A /* CabinClass.swift */,
+				F90E45632ABC884800C1851A /* BookingOption.swift */,
+				F90E45652ABC886800C1851A /* Segment.swift */,
+				F90E456A2ABC88B200C1851A /* Segment */,
+				F90E45682ABC888A00C1851A /* Carrier.swift */,
+			);
+			path = Flight;
+			sourceTree = "<group>";
+		};
+		F90E456A2ABC88B200C1851A /* Segment */ = {
+			isa = PBXGroup;
+			children = (
+				F90E456B2ABC88BC00C1851A /* Stop.swift */,
+				F90E456D2ABC88CA00C1851A /* Stop */,
+				F90E45702ABC88EA00C1851A /* Layover.swift */,
+			);
+			path = Segment;
+			sourceTree = "<group>";
+		};
+		F90E456D2ABC88CA00C1851A /* Stop */ = {
+			isa = PBXGroup;
+			children = (
+				F90E456E2ABC88CF00C1851A /* City.swift */,
+			);
+			path = Stop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +216,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90E45692ABC888A00C1851A /* Carrier.swift in Sources */,
+				F90E45602ABC5C7F00C1851A /* Flight.swift in Sources */,
 				F90E454B2ABC361100C1851A /* GraphQLClient.swift in Sources */,
+				F90E45642ABC884800C1851A /* BookingOption.swift in Sources */,
 				F90E454F2ABC3CB700C1851A /* GraphQLResponse.swift in Sources */,
 				F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */,
+				F90E456F2ABC88CF00C1851A /* City.swift in Sources */,
+				F90E45662ABC886800C1851A /* Segment.swift in Sources */,
 				F90E453C2ABC33A000C1851A /* Kiwi_AssignmentApp.swift in Sources */,
+				F90E45712ABC88EA00C1851A /* Layover.swift in Sources */,
+				F90E456C2ABC88BC00C1851A /* Stop.swift in Sources */,
 				F90E454D2ABC3C8F00C1851A /* GraphQLRequest.swift in Sources */,
+				F90E45592ABC4E2800C1851A /* Models.swift in Sources */,
+				F90E45622ABC881600C1851A /* CabinClass.swift in Sources */,
+				F90E45532ABC4D5300C1851A /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
