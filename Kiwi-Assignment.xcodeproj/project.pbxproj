@@ -11,6 +11,9 @@
 		F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E453D2ABC33A000C1851A /* ContentView.swift */; };
 		F90E45402ABC33A200C1851A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F90E453F2ABC33A200C1851A /* Assets.xcassets */; };
 		F90E45432ABC33A200C1851A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F90E45422ABC33A200C1851A /* Preview Assets.xcassets */; };
+		F90E454B2ABC361100C1851A /* GraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454A2ABC361100C1851A /* GraphQLClient.swift */; };
+		F90E454D2ABC3C8F00C1851A /* GraphQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454C2ABC3C8F00C1851A /* GraphQLRequest.swift */; };
+		F90E454F2ABC3CB700C1851A /* GraphQLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E454E2ABC3CB700C1851A /* GraphQLResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		F90E453D2ABC33A000C1851A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F90E453F2ABC33A200C1851A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F90E45422ABC33A200C1851A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F90E454A2ABC361100C1851A /* GraphQLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLClient.swift; sourceTree = "<group>"; };
+		F90E454C2ABC3C8F00C1851A /* GraphQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRequest.swift; sourceTree = "<group>"; };
+		F90E454E2ABC3CB700C1851A /* GraphQLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,7 @@
 		F90E453A2ABC33A000C1851A /* Kiwi-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				F90E45492ABC360400C1851A /* GraphQL */,
 				F90E453B2ABC33A000C1851A /* Kiwi_AssignmentApp.swift */,
 				F90E453D2ABC33A000C1851A /* ContentView.swift */,
 				F90E453F2ABC33A200C1851A /* Assets.xcassets */,
@@ -65,6 +72,16 @@
 				F90E45422ABC33A200C1851A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F90E45492ABC360400C1851A /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				F90E454C2ABC3C8F00C1851A /* GraphQLRequest.swift */,
+				F90E454E2ABC3CB700C1851A /* GraphQLResponse.swift */,
+				F90E454A2ABC361100C1851A /* GraphQLClient.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90E454B2ABC361100C1851A /* GraphQLClient.swift in Sources */,
+				F90E454F2ABC3CB700C1851A /* GraphQLResponse.swift in Sources */,
 				F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */,
 				F90E453C2ABC33A000C1851A /* Kiwi_AssignmentApp.swift in Sources */,
+				F90E454D2ABC3C8F00C1851A /* GraphQLRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
