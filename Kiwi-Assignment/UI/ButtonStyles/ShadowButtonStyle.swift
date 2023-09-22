@@ -11,6 +11,7 @@ struct ShadowButtonStyle: ButtonStyle {
         configuration.label
             .opacity(configuration.isPressed ? 0.6 : 1)
             .frame(maxWidth: .infinity)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
             .background(
                 resolvedBackgroundStyle.shadow(.drop(
                     radius: configuration.isPressed ? 2 : 5,

@@ -27,7 +27,7 @@ extension Models {
 }
 
 extension Models {
-    struct Place: Decodable {
+    struct Place: Decodable, Identifiable, Hashable {
         var id: String
         var legacyID: String
         var name: String
@@ -61,6 +61,14 @@ extension Models {
             let gpsContainer = try container.nestedContainer(keyedBy: GPSCodingKeys.self, forKey: .gps)
             latitude = try gpsContainer.decode(Double.self, forKey: .lat)
             longitude = try gpsContainer.decode(Double.self, forKey: .lng)
+        }
+        
+        init(id: String, legacyID: String, name: String, latitude: Double, longitude: Double) {
+            self.id = id
+            self.legacyID = legacyID
+            self.name = name
+            self.latitude = latitude
+            self.longitude = longitude
         }
     }
 }

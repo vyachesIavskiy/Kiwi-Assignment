@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F90907BA2ABCDE03007D1C8C /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90907B92ABCDE03007D1C8C /* Stepper.swift */; };
-		F90E453C2ABC33A000C1851A /* Kiwi_AssignmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E453B2ABC33A000C1851A /* Kiwi_AssignmentApp.swift */; };
+		F90E453C2ABC33A000C1851A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E453B2ABC33A000C1851A /* App.swift */; };
 		F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E453D2ABC33A000C1851A /* ContentView.swift */; };
 		F90E45402ABC33A200C1851A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F90E453F2ABC33A200C1851A /* Assets.xcassets */; };
 		F90E45432ABC33A200C1851A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F90E45422ABC33A200C1851A /* Preview Assets.xcassets */; };
@@ -30,12 +30,13 @@
 		F9848E842ABD8C3500F3642A /* MultiSelectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E832ABD8C3500F3642A /* MultiSelectionPicker.swift */; };
 		F9848E862ABD962000F3642A /* CheckmarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E852ABD962000F3642A /* CheckmarkButtonStyle.swift */; };
 		F9848E882ABD99B300F3642A /* ShadowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E872ABD99B300F3642A /* ShadowButtonStyle.swift */; };
+		F9848E8C2ABDA68400F3642A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E8B2ABDA68400F3642A /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F90907B92ABCDE03007D1C8C /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 		F90E45382ABC33A000C1851A /* Kiwi-Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kiwi-Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F90E453B2ABC33A000C1851A /* Kiwi_AssignmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kiwi_AssignmentApp.swift; sourceTree = "<group>"; };
+		F90E453B2ABC33A000C1851A /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F90E453D2ABC33A000C1851A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F90E453F2ABC33A200C1851A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F90E45422ABC33A200C1851A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		F9848E832ABD8C3500F3642A /* MultiSelectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionPicker.swift; sourceTree = "<group>"; };
 		F9848E852ABD962000F3642A /* CheckmarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkButtonStyle.swift; sourceTree = "<group>"; };
 		F9848E872ABD99B300F3642A /* ShadowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButtonStyle.swift; sourceTree = "<group>"; };
+		F9848E8B2ABDA68400F3642A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 			children = (
 				F90907BB2ABCE51D007D1C8C /* Controls */,
 				F90907B52ABCDD73007D1C8C /* ButtonStyles */,
-				F9848E812ABD88AB00F3642A /* TapLocationView.swift */,
+				F9848E892ABDA66300F3642A /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -120,9 +122,8 @@
 				F90E45512ABC4D4C00C1851A /* Models */,
 				F90E45492ABC360400C1851A /* GraphQL */,
 				F90907B42ABCDD6E007D1C8C /* UI */,
-				F90E453B2ABC33A000C1851A /* Kiwi_AssignmentApp.swift */,
+				F90E453B2ABC33A000C1851A /* App.swift */,
 				F90E453D2ABC33A000C1851A /* ContentView.swift */,
-				F90E45722ABC8AAF00C1851A /* SearchConfigurationView.swift */,
 				F90E453F2ABC33A200C1851A /* Assets.xcassets */,
 				F90E45412ABC33A200C1851A /* Preview Content */,
 			);
@@ -186,6 +187,24 @@
 				F90E456E2ABC88CF00C1851A /* City.swift */,
 			);
 			path = Stop;
+			sourceTree = "<group>";
+		};
+		F9848E892ABDA66300F3642A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9848E812ABD88AB00F3642A /* TapLocationView.swift */,
+				F9848E8A2ABDA67500F3642A /* Search */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9848E8A2ABDA67500F3642A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F90E45722ABC8AAF00C1851A /* SearchConfigurationView.swift */,
+				F9848E8B2ABDA68400F3642A /* SearchView.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +286,8 @@
 				F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */,
 				F90E456F2ABC88CF00C1851A /* City.swift in Sources */,
 				F90E45662ABC886800C1851A /* Segment.swift in Sources */,
-				F90E453C2ABC33A000C1851A /* Kiwi_AssignmentApp.swift in Sources */,
+				F90E453C2ABC33A000C1851A /* App.swift in Sources */,
+				F9848E8C2ABDA68400F3642A /* SearchView.swift in Sources */,
 				F9848E882ABD99B300F3642A /* ShadowButtonStyle.swift in Sources */,
 				F90E45712ABC88EA00C1851A /* Layover.swift in Sources */,
 				F90E456C2ABC88BC00C1851A /* Stop.swift in Sources */,
