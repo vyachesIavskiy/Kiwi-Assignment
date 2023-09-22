@@ -1,11 +1,24 @@
 import Foundation
 
 extension Models.Flight {
-    enum CabinClass: Decodable {
+    enum CabinClass: Decodable, CaseIterable, Identifiable {
         case economy
         case premiumEconomy
         case firstClass
         case business
+        
+        // This is a good point to get localized strings for cabin class
+        // but I don't localize the app.
+        var stringValue: String {
+            switch self {
+            case .economy: "Economy"
+            case .premiumEconomy: "Premium economy"
+            case .firstClass: "First class"
+            case .business: "Business"
+            }
+        }
+        
+        var id: Self { self }
         
         init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
