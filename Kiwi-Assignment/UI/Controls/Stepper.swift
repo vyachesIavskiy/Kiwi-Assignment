@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct Stepper<Label: View>: View {
-    
     private var label: Label
     private var onIncrement: (() -> Void)?
     private var onDecrement: (() -> Void)?
@@ -12,6 +11,7 @@ struct Stepper<Label: View>: View {
     @State private var tapLocation: TapLocation?
     @State private var incrementDisabled = false
     @State private var decrementDisabled = false
+    @State private var appeared = false
     
     @Environment(\.layoutDirection) private var layoutDirection
     
@@ -23,12 +23,24 @@ struct Stepper<Label: View>: View {
     }
     
     private var rotationAngle: Angle {
-        switch tapLocation {
+        let action = resolveAction()
+        
+        return switch tapLocation {
         case .left:
-            .degrees(-5)
+            if (action == .increment && !incrementDisabled) ||
+               (action == .decrement && !decrementDisabled) {
+                .degrees(-5)
+            } else {
+                .zero
+            }
             
         case .right:
-            .degrees(5)
+            if (action == .increment && !incrementDisabled) ||
+               (action == .decrement && !decrementDisabled) {
+                .degrees(5)
+            } else {
+                .zero
+            }
         
         default: .zero
         }
@@ -36,8 +48,8 @@ struct Stepper<Label: View>: View {
     
     private var shadowColor: Color {
         switch resolveAction() {
-        case .decrement: .red
-        case .increment: .green
+        case .decrement: _canDecrement() ? .red : .gray
+        case .increment: _canIncrement() ? .green : .gray
         
         default: .black.opacity(0.33)
         }
@@ -47,8 +59,7 @@ struct Stepper<Label: View>: View {
         HStack {
             Image(systemName: "minus")
                 .font(.title2)
-                .foregroundStyle(.red)
-                .disabled(decrementDisabled)
+                .foregroundStyle(decrementDisabled ? .gray : .red)
             
             Spacer()
             
@@ -58,8 +69,7 @@ struct Stepper<Label: View>: View {
             
             Image(systemName: "plus")
                 .font(.title2)
-                .foregroundStyle(.green)
-                .disabled(decrementDisabled)
+                .foregroundStyle(incrementDisabled ? .gray : .green)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
@@ -71,14 +81,20 @@ struct Stepper<Label: View>: View {
         .rotation3DEffect(rotationAngle, axis: (x: 0.0, y: 1.0, z: 0.0))
         .animation(.default, value: isPressed)
         .animation(.default, value: tapLocation)
+        .animation(.default, value: rotationAngle)
         .overlay {
-            LocationTapView(
+            TapLocationView(
                 action: handleAction,
                 repeatAction: handleAction,
                 location: resolveTapLocation
             ) {
                 tapLocation = nil
             }
+        }
+        .onAppear {
+            incrementDisabled = !_canIncrement()
+            decrementDisabled = !_canDecrement()
+            appeared = true
         }
     }
     
@@ -168,24 +184,24 @@ private extension Stepper {
         let action = resolveAction()
         switch action {
         case .increment:
-            let canIncrement = _canIncrement()
-            incrementDisabled = !canIncrement
-            if canIncrement {
+            if _canIncrement() {
                 onIncrement?()
             }
             
         case .decrement:
-            let canDecrement = _canDecrement()
-            decrementDisabled = !canDecrement
-            if canDecrement {
+            if _canDecrement() {
                 onDecrement?()
             }
+            
         case nil: break
         }
+        
+        incrementDisabled = !_canIncrement()
+        decrementDisabled = !_canDecrement()
     }
 }
 
-#Preview {
+#Preview("Stepper (closures)") {
     Stepper {
         Label("Press Me", systemImage: "star")
     } onIncrement: {
@@ -195,169 +211,10 @@ private extension Stepper {
     }
 }
 
-struct LocationTapView: UIViewRepresentable {
-    var delay: Duration
-    var repeatDelay: Duration
-    var action: (CGPoint) -> Void
-    var repeatAction: (CGPoint) -> Void
-    var location: (CGPoint) -> Void
-    var onEnd: () -> Void
+#Preview("Stepper (binding)") {
+    @State var counter = 0
     
-    init(
-        delay: Duration = .seconds(0.75),
-        repeatDelay: Duration = .seconds(0.5),
-        action: @escaping (CGPoint) -> Void,
-        repeatAction: @escaping (CGPoint) -> Void,
-        location: @escaping (CGPoint) -> Void,
-        onEnd: @escaping () -> Void
-    ) {
-        self.delay = delay
-        self.repeatDelay = repeatDelay
-        self.action = action
-        self.repeatAction = repeatAction
-        self.location = location
-        self.onEnd = onEnd
+    return Stepper(value: $counter) {
+        Text("Counter \(counter)")
     }
-    
-    func makeUIView(context: Context) -> UILocationTapView {
-        UILocationTapView(
-            delay: delay,
-            repeatDelay: repeatDelay,
-            action: action,
-            repeatAction: repeatAction,
-            location: location,
-            onEnd: onEnd
-        )
-    }
-    
-    func updateUIView(_ uiView: UILocationTapView, context: Context) {
-        uiView.delay = delay
-        uiView.repeatDelay = repeatDelay
-        uiView.action = action
-        uiView.repeatAction = repeatAction
-        uiView.onEnd = onEnd
-    }
-}
-
-final class UILocationTapView: UIView {
-    var delay: Duration
-    var repeatDelay: Duration
-    var action: (CGPoint) -> Void
-    var repeatAction: (CGPoint) -> Void
-    var location: (CGPoint) -> Void
-    var onEnd: () -> Void
-    
-    private var touchesBeginTimeStamp: TimeInterval?
-    private var repeatTask: Task<Void, Never>?
-    private var aspectLocation: CGPoint?
-    
-    init(
-        delay: Duration,
-        repeatDelay: Duration,
-        action: @escaping (CGPoint) -> Void,
-        repeatAction: @escaping (CGPoint) -> Void,
-        location: @escaping (CGPoint) -> Void,
-        onEnd: @escaping () -> Void
-    ) {
-        self.delay = delay
-        self.repeatDelay = repeatDelay
-        self.action = action
-        self.repeatAction = repeatAction
-        self.location = location
-        self.onEnd = onEnd
-        
-        super.init(frame: .zero)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let event, touches.count == 1, let firstTouch = touches.first else { return }
-        
-        touchesBeginTimeStamp = event.timestamp
-        updateAspectLocation(from: firstTouch)
-        repeatTask = Task {
-            while !Task.isCancelled {
-                try? await Task.sleep(for: .seconds(0.5))
-                
-                guard !Task.isCancelled else { break }
-                
-                if let aspectLocation {
-                    await MainActor.run {
-                        repeatAction(aspectLocation)
-                    }
-                }
-            }
-        }
-        
-        super.touchesBegan(touches, with: event)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard touches.count == 1, let firstTouch = touches.first else {
-            cancel()
-            return
-        }
-        
-        updateAspectLocation(from: firstTouch)
-        if let aspectLocation {
-            location(aspectLocation)
-        }
-        
-        super.touchesMoved(touches, with: event)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        defer {
-            cancel()
-        }
-        
-        guard let event, touches.count == 1, let firstTouch = touches.first else { return }
-        
-        updateAspectLocation(from: firstTouch)
-        
-        if let touchesBeginTimeStamp, event.timestamp - touchesBeginTimeStamp < 0.5, let aspectLocation {
-            action(aspectLocation)
-        }
-        
-        super.touchesEnded(touches, with: event)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        cancel()
-        
-        super.touchesCancelled(touches, with: event)
-    }
-    
-    private func cancel() {
-        print("Cancel touches")
-        touchesBeginTimeStamp = nil
-        repeatTask?.cancel()
-        repeatTask = nil
-        onEnd()
-    }
-    
-    private func updateAspectLocation(from touch: UITouch) {
-        let touchLocation = touch.location(in: self)
-        aspectLocation = CGPoint(x: touchLocation.x / bounds.width, y: touchLocation.y / bounds.height)
-    }
-}
-
-#Preview {
-    LocationTapView(
-        action: { location in
-            print("Tap at \(location)")
-        },
-        repeatAction: { location in
-            print("Long tap at \(location)")
-        }, location: { location in
-            print("Location changed to \(location)")
-        },
-        onEnd: {
-            print("Ended")
-        }
-    )
 }

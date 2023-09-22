@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View, CollapsedContent: View>: View {
     private var sources: [SelectionValue]
-    @Binding private var selection: [SelectionValue]
+    @Binding private var selection: Set<SelectionValue>
     private var content: (SelectionValue) -> Content
     private var collapsedContent: CollapsedContent
     private var label: Label
@@ -27,7 +27,8 @@ struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View
                     Spacer()
                     
                     collapsedContent
-                        .foregroundStyle(Color.accentColor)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
                         .transition(
                             .move(edge: .trailing)
                             .combined(with: .offset(CGSize(width: 64, height: 0)))
@@ -35,11 +36,11 @@ struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View
                         )
                 } else {
                     Button("Select all") {
-                        
+                        sources.forEach { selection.insert($0) }
                     }
                     .disabled(selectAllDisabled || !isExpanded)
                     .transition(
-                        .move(edge: .trailing)
+                        .move(edge: .leading)
                         .combined(with: .opacity.animation(.default.speed(2)))
                     )
                     
@@ -56,14 +57,29 @@ struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View
                     Divider()
                     
                     ForEach(sources.indices, id: \.self) { index in
-                        content(sources[index])
-                            .frame(maxWidth: .infinity)
+                        let currentValue = sources[index]
+                        let isLastIndex = index == sources.indices.last
                         
-                        if index != sources.indices.last {
+                        Button {
+                            if selection.contains(currentValue) {
+                                selection.remove(currentValue)
+                            } else {
+                                selection.insert(currentValue)
+                            }
+                        } label: {
+                            content(currentValue)
+                        }
+                        .buttonStyle(.checkmark(selected: selection.contains(currentValue)))
+                        .padding(.horizontal, 4)
+                        .padding(.top, 8)
+                        .padding(.bottom, isLastIndex ? 0 : 8)
+                        
+                        if !isLastIndex {
                             Divider()
                         }
                     }
                 }
+                .padding(.top, 8)
                 .transition(.move(edge: .bottom))
             }
         }
@@ -75,15 +91,15 @@ struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View
             .background.shadow(.drop(radius: 5, y: 2)),
             in: RoundedRectangle(cornerRadius: 12)
         )
-        .animation(.default, value: isExpanded)
         .onTapGesture {
             isExpanded.toggle()
         }
+        .animation(.default, value: isExpanded)
     }
     
     init(
         sources: [SelectionValue],
-        selection: Binding<[SelectionValue]>,
+        selection: Binding<Set<SelectionValue>>,
         @ViewBuilder content: @escaping (SelectionValue) -> Content,
         @ViewBuilder collapsedContent: () -> CollapsedContent,
         @ViewBuilder label: () -> Label
@@ -97,7 +113,7 @@ struct MultiSelectionPicker<Label: View, SelectionValue: Hashable, Content: View
 }
 
 #Preview {
-    MultiSelectionPicker(sources: [1, 2, 3], selection: .constant([Int]())) { index in
+    MultiSelectionPicker(sources: [1, 2, 3], selection: .constant([2])) { index in
         Text(index, format: .number)
     } collapsedContent: {
         HStack {
