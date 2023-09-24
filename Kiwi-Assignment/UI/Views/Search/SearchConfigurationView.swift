@@ -13,8 +13,8 @@ final class SearchConfigurationViewModel {
     fileprivate var selectedCabinClasses: Set<CabinClass> = [.economy]
     fileprivate var searchMode: SearchMode?
     
-    private var navigation: Binding<[Navigation]>
     private var graphQLClient: GraphQLClient
+    private var continuation: CheckedContinuation<Void, Never>?
     
     fileprivate var collapsedSelectedCabinClassesString: String {
         // I need this for proper sorting
@@ -36,17 +36,23 @@ final class SearchConfigurationViewModel {
         toPlaces.map(\.name).joined(separator: ", ")
     }
     
-    init(navigation: Binding<[Navigation]>, graphQLClient: GraphQLClient) {
-        self.navigation = navigation
+    init(graphQLClient: GraphQLClient) {
         self.graphQLClient = graphQLClient
+    }
+    
+    func onProcceed() async {
+        await withCheckedContinuation { continuation in
+            self.continuation = continuation
+        }
+    }
+    
+    func procceed() {
+        continuation?.resume()
+        continuation = nil
     }
     
     fileprivate func presentSearch(mode: SearchMode) {
         searchMode = mode
-    }
-    
-    fileprivate func procceed() {
-        navigation.wrappedValue.append(.flights)
     }
     
     fileprivate func searchViewModel(searchMode: SearchMode) -> SearchViewModel {
@@ -177,7 +183,6 @@ struct SearchConfigurationView: View {
 
 #Preview {
     SearchConfigurationView(viewModel: SearchConfigurationViewModel(
-        navigation: .constant([]),
         graphQLClient: GraphQLClient()
     ))
 }
