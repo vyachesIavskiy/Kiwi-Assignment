@@ -26,6 +26,16 @@
 		F90E456F2ABC88CF00C1851A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E456E2ABC88CF00C1851A /* City.swift */; };
 		F90E45712ABC88EA00C1851A /* Layover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45702ABC88EA00C1851A /* Layover.swift */; };
 		F90E45732ABC8AAF00C1851A /* SearchConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E45722ABC8AAF00C1851A /* SearchConfigurationView.swift */; };
+		F91995D72AC028FC007E5888 /* FlightsContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91995D62AC028FC007E5888 /* FlightsContentDetailView.swift */; };
+		F91995DA2AC02923007E5888 /* CGPoint+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91995D92AC02923007E5888 /* CGPoint+Operators.swift */; };
+		F91995DC2AC02971007E5888 /* FlightsContentItineraryImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91995DB2AC02971007E5888 /* FlightsContentItineraryImagesView.swift */; };
+		F91995DE2AC02A4E007E5888 /* FlightsContentItineraryPlaceNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91995DD2AC02A4E007E5888 /* FlightsContentItineraryPlaceNamesView.swift */; };
+		F91996EC2ABF690E001D3617 /* ScrollViewOffsetReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91996EB2ABF690E001D3617 /* ScrollViewOffsetReader.swift */; };
+		F91996EF2ABF6A43001D3617 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91996EE2ABF6A43001D3617 /* Triangle.swift */; };
+		F91996F52ABF81EE001D3617 /* SizeReaderViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91996F42ABF81EE001D3617 /* SizeReaderViewModifier.swift */; };
+		F97492782AC05658006F61C6 /* FlightsLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97492772AC05658006F61C6 /* FlightsLoadingView.swift */; };
+		F974927A2AC05EAF006F61C6 /* FlightsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97492792AC05EAF006F61C6 /* FlightsContentView.swift */; };
+		F974927C2AC063DA006F61C6 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F974927B2AC063DA006F61C6 /* GradientBackgroundView.swift */; };
 		F9848E822ABD88AB00F3642A /* TapLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E812ABD88AB00F3642A /* TapLocationView.swift */; };
 		F9848E842ABD8C3500F3642A /* MultiSelectionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E832ABD8C3500F3642A /* MultiSelectionPicker.swift */; };
 		F9848E862ABD962000F3642A /* CheckmarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9848E852ABD962000F3642A /* CheckmarkButtonStyle.swift */; };
@@ -54,6 +64,16 @@
 		F90E456E2ABC88CF00C1851A /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F90E45702ABC88EA00C1851A /* Layover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layover.swift; sourceTree = "<group>"; };
 		F90E45722ABC8AAF00C1851A /* SearchConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurationView.swift; sourceTree = "<group>"; };
+		F91995D62AC028FC007E5888 /* FlightsContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsContentDetailView.swift; sourceTree = "<group>"; };
+		F91995D92AC02923007E5888 /* CGPoint+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Operators.swift"; sourceTree = "<group>"; };
+		F91995DB2AC02971007E5888 /* FlightsContentItineraryImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsContentItineraryImagesView.swift; sourceTree = "<group>"; };
+		F91995DD2AC02A4E007E5888 /* FlightsContentItineraryPlaceNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsContentItineraryPlaceNamesView.swift; sourceTree = "<group>"; };
+		F91996EB2ABF690E001D3617 /* ScrollViewOffsetReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffsetReader.swift; sourceTree = "<group>"; };
+		F91996EE2ABF6A43001D3617 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		F91996F42ABF81EE001D3617 /* SizeReaderViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReaderViewModifier.swift; sourceTree = "<group>"; };
+		F97492772AC05658006F61C6 /* FlightsLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsLoadingView.swift; sourceTree = "<group>"; };
+		F97492792AC05EAF006F61C6 /* FlightsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsContentView.swift; sourceTree = "<group>"; };
+		F974927B2AC063DA006F61C6 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 		F9848E812ABD88AB00F3642A /* TapLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapLocationView.swift; sourceTree = "<group>"; };
 		F9848E832ABD8C3500F3642A /* MultiSelectionPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionPicker.swift; sourceTree = "<group>"; };
 		F9848E852ABD962000F3642A /* CheckmarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkButtonStyle.swift; sourceTree = "<group>"; };
@@ -75,6 +95,8 @@
 		F90907B42ABCDD6E007D1C8C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F91996F62ABF8225001D3617 /* ViewModifiers */,
+				F91996ED2ABF6A3B001D3617 /* Shapes */,
 				F90907BB2ABCE51D007D1C8C /* Controls */,
 				F90907B52ABCDD73007D1C8C /* ButtonStyles */,
 				F9848E892ABDA66300F3642A /* Views */,
@@ -119,11 +141,11 @@
 		F90E453A2ABC33A000C1851A /* Kiwi-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				F91995D82AC02919007E5888 /* Extensions */,
 				F90E45512ABC4D4C00C1851A /* Models */,
 				F90E45492ABC360400C1851A /* GraphQL */,
 				F90907B42ABCDD6E007D1C8C /* UI */,
 				F90E453B2ABC33A000C1851A /* App.swift */,
-				F90E453D2ABC33A000C1851A /* ContentView.swift */,
 				F90E453F2ABC33A200C1851A /* Assets.xcassets */,
 				F90E45412ABC33A200C1851A /* Preview Content */,
 			);
@@ -189,11 +211,59 @@
 			path = Stop;
 			sourceTree = "<group>";
 		};
+		F91995D82AC02919007E5888 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F91995D92AC02923007E5888 /* CGPoint+Operators.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F91996ED2ABF6A3B001D3617 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				F91996EE2ABF6A43001D3617 /* Triangle.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		F91996F62ABF8225001D3617 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				F91996F42ABF81EE001D3617 /* SizeReaderViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		F92C8BF82ABECB0F007910F8 /* Flight */ = {
+			isa = PBXGroup;
+			children = (
+				F97492772AC05658006F61C6 /* FlightsLoadingView.swift */,
+				F97492792AC05EAF006F61C6 /* FlightsContentView.swift */,
+				F974927D2AC069F2006F61C6 /* FlightsContent */,
+			);
+			path = Flight;
+			sourceTree = "<group>";
+		};
+		F974927D2AC069F2006F61C6 /* FlightsContent */ = {
+			isa = PBXGroup;
+			children = (
+				F91995D62AC028FC007E5888 /* FlightsContentDetailView.swift */,
+				F91995DB2AC02971007E5888 /* FlightsContentItineraryImagesView.swift */,
+				F91995DD2AC02A4E007E5888 /* FlightsContentItineraryPlaceNamesView.swift */,
+			);
+			path = FlightsContent;
+			sourceTree = "<group>";
+		};
 		F9848E892ABDA66300F3642A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F90E453D2ABC33A000C1851A /* ContentView.swift */,
 				F9848E812ABD88AB00F3642A /* TapLocationView.swift */,
 				F9848E8A2ABDA67500F3642A /* Search */,
+				F92C8BF82ABECB0F007910F8 /* Flight */,
+				F91996EB2ABF690E001D3617 /* ScrollViewOffsetReader.swift */,
+				F974927B2AC063DA006F61C6 /* GradientBackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,22 +353,32 @@
 				F90E45642ABC884800C1851A /* BookingOption.swift in Sources */,
 				F90E454F2ABC3CB700C1851A /* GraphQLResponse.swift in Sources */,
 				F90907BA2ABCDE03007D1C8C /* Stepper.swift in Sources */,
+				F974927A2AC05EAF006F61C6 /* FlightsContentView.swift in Sources */,
 				F90E453E2ABC33A000C1851A /* ContentView.swift in Sources */,
 				F90E456F2ABC88CF00C1851A /* City.swift in Sources */,
+				F91995DC2AC02971007E5888 /* FlightsContentItineraryImagesView.swift in Sources */,
 				F90E45662ABC886800C1851A /* Segment.swift in Sources */,
 				F90E453C2ABC33A000C1851A /* App.swift in Sources */,
+				F91996EC2ABF690E001D3617 /* ScrollViewOffsetReader.swift in Sources */,
 				F9848E8C2ABDA68400F3642A /* SearchView.swift in Sources */,
 				F9848E882ABD99B300F3642A /* ShadowButtonStyle.swift in Sources */,
 				F90E45712ABC88EA00C1851A /* Layover.swift in Sources */,
+				F97492782AC05658006F61C6 /* FlightsLoadingView.swift in Sources */,
 				F90E456C2ABC88BC00C1851A /* Stop.swift in Sources */,
 				F9848E822ABD88AB00F3642A /* TapLocationView.swift in Sources */,
+				F91996EF2ABF6A43001D3617 /* Triangle.swift in Sources */,
 				F9848E842ABD8C3500F3642A /* MultiSelectionPicker.swift in Sources */,
+				F974927C2AC063DA006F61C6 /* GradientBackgroundView.swift in Sources */,
 				F90E454D2ABC3C8F00C1851A /* GraphQLRequest.swift in Sources */,
+				F91995DA2AC02923007E5888 /* CGPoint+Operators.swift in Sources */,
 				F90E45732ABC8AAF00C1851A /* SearchConfigurationView.swift in Sources */,
 				F9848E862ABD962000F3642A /* CheckmarkButtonStyle.swift in Sources */,
 				F90E45592ABC4E2800C1851A /* Models.swift in Sources */,
+				F91996F52ABF81EE001D3617 /* SizeReaderViewModifier.swift in Sources */,
 				F90E45622ABC881600C1851A /* CabinClass.swift in Sources */,
 				F90E45532ABC4D5300C1851A /* Place.swift in Sources */,
+				F91995D72AC028FC007E5888 /* FlightsContentDetailView.swift in Sources */,
+				F91995DE2AC02A4E007E5888 /* FlightsContentItineraryPlaceNamesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

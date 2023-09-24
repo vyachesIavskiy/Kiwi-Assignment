@@ -1,22 +1,16 @@
 import SwiftUI
 
-enum Navigation {
-    case flights
-}
-
 @Observable final class RootViewModel {
-    var navigationPath = [Navigation]()
-    var graphQLClient = GraphQLClient()
+    private var graphQLClient = GraphQLClient()
     
     var searchConfigurationViewModel: SearchConfigurationViewModel {
         SearchConfigurationViewModel(
-            navigation: Binding { [weak self] in
-                self?.navigationPath ?? []
-            } set: { [weak self] newValue in
-                self?.navigationPath = newValue
-            },
             graphQLClient: graphQLClient
         )
+    }
+    
+    var contentViewModel: ContentView.ViewModel {
+        ContentView.ViewModel(graphQLClient: graphQLClient)
     }
 }
 
@@ -26,14 +20,7 @@ struct Kiwi_AssignmentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $viewModel.navigationPath) {
-                SearchConfigurationView(viewModel: viewModel.searchConfigurationViewModel)
-            }
-            .navigationDestination(for: Navigation.self) { path in
-                switch path {
-                case .flights: EmptyView()
-                }
-            }
+            ContentView(viewModel: viewModel.contentViewModel)
         }
     }
 }
