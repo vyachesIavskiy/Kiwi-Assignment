@@ -6,10 +6,10 @@ The purpose of this document is to describe what is done, how it is done and wha
 
 ## Project info
 
-Swift: 5.9
-Xcode: 15.0
-UI: SwiftUI with UIKit for stuff which is not present in SwiftUI
-Archtecture: MVVM
+Swift: 5.9 <br />
+Xcode: 15.0 <br />
+UI: SwiftUI with UIKit for stuff which is not present in SwiftUI <br />
+Archtecture: MVVM <br />
 Network: GraphQL client built on top of Swift Concurrency 
 
 ## What is done?
