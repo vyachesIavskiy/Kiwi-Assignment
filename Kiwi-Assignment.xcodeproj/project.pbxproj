@@ -71,6 +71,7 @@
 		F91996EB2ABF690E001D3617 /* ScrollViewOffsetReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffsetReader.swift; sourceTree = "<group>"; };
 		F91996EE2ABF6A43001D3617 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		F91996F42ABF81EE001D3617 /* SizeReaderViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReaderViewModifier.swift; sourceTree = "<group>"; };
+		F95EF7182AC413E4004933B0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F97492772AC05658006F61C6 /* FlightsLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsLoadingView.swift; sourceTree = "<group>"; };
 		F97492792AC05EAF006F61C6 /* FlightsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsContentView.swift; sourceTree = "<group>"; };
 		F974927B2AC063DA006F61C6 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		F90E452F2ABC33A000C1851A = {
 			isa = PBXGroup;
 			children = (
+				F95EF7182AC413E4004933B0 /* README.md */,
 				F90E453A2ABC33A000C1851A /* Kiwi-Assignment */,
 				F90E45392ABC33A000C1851A /* Products */,
 			);
