@@ -66,16 +66,13 @@ extension GraphQLRequest {
         )
     }
     
-    struct Person {
-        var handBags: Int
-        var storedBags: Int
-    }
-    
     static func flights(
-        from fromID: String,
-        to toID: String,
-        adults adultPassengers: [Person],
-        childrens childrenPassengers: [Person]
+        from fromIDs: String,
+        to toIDs: String,
+        adults adultPassengers: Int,
+        childrens childrenPassengers: Int,
+        startDate: String,
+        endDate: String
     ) -> GraphQLRequest {
         GraphQLRequest(
             body: """
@@ -126,23 +123,19 @@ extension GraphQLRequest {
                                 }, \
                                 itinerary: { \
                                     source: { \
-                                        ids: [\\"\(fromID)\\"] \
+                                        ids: [\(fromIDs)] \
                                     }, \
                                     destination: { \
-                                        ids: [\\"\(toID)\\"] \
+                                        ids: [\(toIDs)] \
                                     }, \
                                     outboundDepartureDate: { \
-                                        start: \\"2023-07-01T00:00:00\\", \
-                                        end: \\"2023-07-01T23:59:00\\" \
+                                        start: \(startDate), \
+                                        end: \(endDate) \
                                     } \
                                 }, \
                                 passengers: { \
-                                    adults: \(adultPassengers.count), \
-                                    children: \(childrenPassengers.count) \
-                                    adultsHandBags: [0], \
-                                    adultsHoldBags: [0], \
-                                    childrenHandBags: [0], \
-                                    childrenHoldBags: [0] \
+                                    adults: \(adultPassengers), \
+                                    children: \(childrenPassengers) \
                                 } \
                             } \
                         ) { \
@@ -152,9 +145,6 @@ extension GraphQLRequest {
                                         id \
                                         duration \
                                         cabinClasses \
-                                        priceEur { \
-                                            amount \
-                                        } \
                                         bookingOptions { \
                                             edges { \
                                                 node { \
@@ -165,11 +155,6 @@ extension GraphQLRequest {
                                                     } \
                                                 } \
                                             } \
-                                        } \
-                                        provider { \
-                                            id \
-                                            name \
-                                            code \
                                         } \
                                         sector { \
                                             id \
