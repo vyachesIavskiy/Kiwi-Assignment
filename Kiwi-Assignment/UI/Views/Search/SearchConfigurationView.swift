@@ -81,102 +81,144 @@ struct SearchConfigurationView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Where would you like to go?")
-                    .font(.title)
-                    .fontDesign(.rounded)
+                placesSection
                 
-                Button {
-                    viewModel.presentSearch(mode: .from)
-                } label: {
-                    HStack {
-                        Text("From:")
-                            .foregroundStyle(.tertiary)
-                        
-                        if !viewModel.fromPlaces.isEmpty {
-                            ViewThatFits {
-                                Text(viewModel.fromPlacesFormatted)
-                                
-                                Text("\(viewModel.fromPlaces.count) seleted")
+                if viewModel.searchMode != .to {
+                    Button {
+                        viewModel.presentSearch(mode: .from)
+                    } label: {
+                        HStack {
+                            Text("From:")
+                                .foregroundStyle(.tertiary)
+                            
+                            if !viewModel.fromPlaces.isEmpty {
+                                ViewThatFits {
+                                    Text(viewModel.fromPlacesFormatted)
+                                    
+                                    Text("\(viewModel.fromPlaces.count) seleted")
+                                }
+                            } else {
+                                Text("Anywhere")
                             }
-                        } else {
-                            Text("Anywhere")
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 24)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 24)
+                    .buttonStyle(.shadow)
+                    .transition(.offset(y: -1000))
                 }
-                .buttonStyle(.shadow)
                 
-                Button {
-                    viewModel.presentSearch(mode: .to)
-                } label: {
-                    HStack {
-                        Text("To:")
-                            .foregroundStyle(.tertiary)
-                        
-                        if !viewModel.toPlaces.isEmpty {
-                            ViewThatFits {
-                                Text(viewModel.toPlacesFormatted)
-                                
-                                Text("\(viewModel.toPlaces.count) seleted")
+                if viewModel.searchMode != .from {
+                    Button {
+                        viewModel.presentSearch(mode: .to)
+                    } label: {
+                        HStack {
+                            Text("To:")
+                                .foregroundStyle(.tertiary)
+                            
+                            if !viewModel.toPlaces.isEmpty {
+                                ViewThatFits {
+                                    Text(viewModel.toPlacesFormatted)
+                                    
+                                    Text("\(viewModel.toPlaces.count) seleted")
+                                }
+                            } else {
+                                Text("Anywhere")
                             }
-                        } else {
-                            Text("Anywhere")
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 24)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 24)
-                }
-                .buttonStyle(.shadow)
-                
-                Text("Who will be travalling?")
-                    .font(.title3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top)
-                
-                Stepper(value: $viewModel.numberOfAdults, in: 1...10) {
-                    Text("Adults: \(viewModel.numberOfAdults)")
+                    .buttonStyle(.shadow)
+                    .transition(.offset(y: 1000))
                 }
                 
-                Stepper(value: $viewModel.numberOfChildren, in: 0...10) {
-                    Text("Children: \(viewModel.numberOfChildren)")
-                }
+                searchResultsSection
                 
-                Text("Just one more step...")
-                    .font(.title3)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top)
-                
-                MultiSelectionPicker(
-                    sources: SearchConfigurationViewModel.CabinClass.allCases,
-                    selection: $viewModel.selectedCabinClasses
-                ) { cabinClass in
-                    Text(cabinClass.stringValue)
-                } collapsedContent: {
-                    Text(viewModel.collapsedSelectedCabinClassesString)
-                } label: {
-                    Text("Cabin class")
+                if viewModel.searchMode == nil {
+                    passengersSection
+                        .transition(.offset(y: 1000))
+                    
+                    cabinClassSection
+                        .transition(.offset(y: 1000))
                 }
             }
             .padding([.horizontal, .top])
         }
         .safeAreaInset(edge: .bottom) {
-            Button {
-                viewModel.procceed()
-            } label: {
-                Text("Let's go!")
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.white)
-                    .padding(16)
+            if viewModel.searchMode == nil {
+                Button {
+                    viewModel.procceed()
+                } label: {
+                    Text("Let's go!")
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.white)
+                        .padding(16)
+                }
+                .disabled(viewModel.procceedButtonDisabled)
+                .buttonStyle(.shadow)
+                .backgroundStyle(Color.accentColor)
+                .padding()
+                .transition(.offset(y: 1000))
             }
-            .disabled(viewModel.procceedButtonDisabled)
-            .buttonStyle(.shadow)
-            .backgroundStyle(Color.accentColor)
-            .padding()
-        }.sheet(item: $viewModel.searchMode) { searchMode in
-            SearchView(viewModel: viewModel.searchViewModel(searchMode: searchMode))
+        }
+        .animation(.default, value: viewModel.searchMode)
+//        .sheet(item: $viewModel.searchMode) { searchMode in
+//            SearchView(viewModel: viewModel.searchViewModel(searchMode: searchMode))
+//        }
+    }
+    
+    @ViewBuilder private var placesSection: some View {
+        if viewModel.searchMode == nil {
+            Text("Where would you like to go?")
+                .font(.title)
+                .fontDesign(.rounded)
+                .transition(.offset(y: -1000))
+        } else {
+            Button("Done") {
+                viewModel.searchMode = nil
+            }
+        }
+    }
+    
+    @ViewBuilder private var searchResultsSection: some View {
+        if viewModel.searchMode != nil {
+            Text("Search result")
+        }
+    }
+    
+    @ViewBuilder private var passengersSection: some View {
+        Text("Who will be travalling?")
+            .font(.title3)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top)
+        
+        Stepper(value: $viewModel.numberOfAdults, in: 1...10) {
+            Text("Adults: \(viewModel.numberOfAdults)")
+        }
+        
+        Stepper(value: $viewModel.numberOfChildren, in: 0...10) {
+            Text("Children: \(viewModel.numberOfChildren)")
+        }
+    }
+    
+    @ViewBuilder private var cabinClassSection: some View {
+        Text("Just one more step...")
+            .font(.title3)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top)
+        
+        MultiSelectionPicker(
+            sources: SearchConfigurationViewModel.CabinClass.allCases,
+            selection: $viewModel.selectedCabinClasses
+        ) { cabinClass in
+            Text(cabinClass.stringValue)
+        } collapsedContent: {
+            Text(viewModel.collapsedSelectedCabinClassesString)
+        } label: {
+            Text("Cabin class")
         }
     }
 }

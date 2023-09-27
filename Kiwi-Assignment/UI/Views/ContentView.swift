@@ -72,26 +72,29 @@ struct ContentView: View {
                 dismissFlightsButton
             }
             
-//            HStack {
-//                Button("Previous") {
-//                    switch viewModel.navigationState {
-//                    case .configuration: viewModel.setNavigation(to: .flights)
-//                    case .loading: viewModel.setNavigation(to: .configuration)
-//                    case .flights: viewModel.setNavigation(to: .loading)
-//                    }
-//                }
-//                
-//                Button("Next") {
-//                    switch viewModel.navigationState {
-//                    case .configuration: viewModel.setNavigation(to: .loading)
-//                    case .loading: viewModel.setNavigation(to: .flights)
-//                    case .flights: viewModel.setNavigation(to: .configuration)
-//                    }
-//                }
-//            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-//            .padding()
-//            .ignoresSafeArea()
+            // This is debug buttons to present user flow since the real logic is not implemented
+            HStack {
+                Button("Previous") {
+                    switch viewModel.navigationState {
+                    case .configuration: viewModel.setNavigation(to: .flights)
+                    case .loading: viewModel.setNavigation(to: .configuration)
+                    case .flights: viewModel.setNavigation(to: .loading)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                
+                Button("Next") {
+                    switch viewModel.navigationState {
+                    case .configuration: viewModel.setNavigation(to: .loading)
+                    case .loading: viewModel.setNavigation(to: .flights)
+                    case .flights: viewModel.setNavigation(to: .configuration)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom)
+            .ignoresSafeArea()
         }
         .animation(.default, value: viewModel.navigationState)
     }
