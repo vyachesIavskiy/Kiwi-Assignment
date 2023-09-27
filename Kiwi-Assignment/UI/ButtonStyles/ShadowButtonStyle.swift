@@ -43,6 +43,7 @@ extension ButtonStyle where Self == ShadowButtonStyle {
         Label("Press Me", systemImage: "star")
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundStyle(.tertiary)
+            .padding()
     }
     .buttonStyle(.shadow)
     .padding()

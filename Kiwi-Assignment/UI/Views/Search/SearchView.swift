@@ -1,5 +1,6 @@
 import SwiftUI
 
+// This is outdated, I decided to go from sheet search to integrated search into SearchConfigurationView
 @Observable final class SearchViewModel {
     typealias Places = Models.Places
     typealias Place = Models.Place
